@@ -136,6 +136,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         private void aboutMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutMenuItemMousePressed
                 System.out.print("pressed");
+                new About();
         }//GEN-LAST:event_aboutMenuItemMousePressed
 
 	/**
