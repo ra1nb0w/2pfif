@@ -14,8 +14,8 @@ import net.iharder.dnd.FileDrop;
  */
 public class MainWindow extends javax.swing.JFrame {
 	
-	static int RET_OK=1;
-	
+	static File openFile;
+
 	/**
 	 * Creates new form MainWindow
 	 */
@@ -56,6 +56,8 @@ public class MainWindow extends javax.swing.JFrame {
 
                 jFileChooser1.setDragEnabled(true);
 
+                jAbout1.setAlwaysOnTop(true);
+
                 jTextArea1.setColumns(20);
                 jTextArea1.setRows(5);
                 jTextArea1.setText("BLabla bla\n\nLicense");
@@ -95,6 +97,9 @@ public class MainWindow extends javax.swing.JFrame {
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setMaximumSize(new java.awt.Dimension(200, 200));
                 setMinimumSize(new java.awt.Dimension(200, 200));
+                setName("2pfif"); // NOI18N
+                setPreferredSize(new java.awt.Dimension(200, 200));
+                setResizable(false);
 
                 jLabel1.setText("Drag the file");
 
@@ -103,16 +108,16 @@ public class MainWindow extends javax.swing.JFrame {
                 jPanel1Layout.setHorizontalGroup(
                         jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                         .add(jPanel1Layout.createSequentialGroup()
-                                .add(147, 147, 147)
+                                .add(54, 54, 54)
                                 .add(jLabel1)
-                                .addContainerGap(165, Short.MAX_VALUE))
+                                .addContainerGap(58, Short.MAX_VALUE))
                 );
                 jPanel1Layout.setVerticalGroup(
                         jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                         .add(jPanel1Layout.createSequentialGroup()
-                                .add(114, 114, 114)
+                                .add(76, 76, 76)
                                 .add(jLabel1)
-                                .addContainerGap(150, Short.MAX_VALUE))
+                                .addContainerGap(88, Short.MAX_VALUE))
                 );
 
                 fileMenu.setMnemonic('f');
@@ -222,10 +227,8 @@ public class MainWindow extends javax.swing.JFrame {
         private void openMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openMenuItemMousePressed
 		int ret = jFileChooser1.showOpenDialog(this);
 		if ( ret == javax.swing.JFileChooser.APPROVE_OPTION) {
-			java.io.File file = jFileChooser1.getSelectedFile();
-			String fileName = file.toString();
-			// show fileName choosed
-			JOptionPane.showMessageDialog(this, fileName);
+			openFile = jFileChooser1.getSelectedFile();
+			//JOptionPane.showMessageDialog(this, openFile.toString());
 		}
         }//GEN-LAST:event_openMenuItemMousePressed
 	
@@ -260,19 +263,23 @@ public class MainWindow extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new MainWindow().setVisible(true);
+				DragDrop();
 			}
 		});
-		// enable drag and drop
-		/*
-		new  FileDrop( jPanel1, new FileDrop.Listener() {
+	}
+	
+	/*
+	 * Drag and Drop method
+	 */
+	private static void DragDrop() {
+		FileDrop funct = new  FileDrop(jPanel1, new FileDrop.Listener()	{ 
 			public void  filesDropped( File[] files ) {
-				for (File file : files) {
-					JOptionPane.showMessageDialog(this, file.toString());
-				}
-			}
-		});
-		*/
-		
+			/* only first value
+			* user while ( File file : files ) {} otherwise
+			*/
+			openFile = files[0];
+		}
+});
 	}
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JMenuItem aboutMenuItem;
@@ -288,7 +295,7 @@ public class MainWindow extends javax.swing.JFrame {
         private javax.swing.JButton jButton1;
         private javax.swing.JFileChooser jFileChooser1;
         private javax.swing.JLabel jLabel1;
-        private javax.swing.JPanel jPanel1;
+        private static javax.swing.JPanel jPanel1;
         private javax.swing.JScrollPane jScrollPane1;
         private javax.swing.JTextArea jTextArea1;
         private javax.swing.JMenuBar menuBar;
