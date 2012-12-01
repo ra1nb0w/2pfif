@@ -1,12 +1,11 @@
 package com.hipifif.pfif;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
-/**
- *
- * @author noname
- */
 public class PFIFBuilder {
     
     private final static String HEADER = "<!--?xml version=\"1.0\" encoding=\"UTF-8\"?-->\n" +
@@ -16,24 +15,41 @@ public class PFIFBuilder {
     
     private final static int INITIAL_STRINGBUFFER_CAPACITY = 1024 * 6;
     
-    private final static String KEY_PERSON_RECORD_ID = "person_record_id";
-    private final static String KEY_ENTRY_DATE = "entry_date";
-    private final static String KEY_EXPIRY_DATE = "expiry_date";
-    private final static String KEY_FULL_NAME = "full_name";
-    private final static String KEY_GIVEN_NAME = "given_name";
-    private final static String KEY_DESCRIPTION = "description";
-    private final static String KEY_SEX = "sex";
-    private final static String KEY_AGE = "age";
-    private final static String KEY_HOME_STREET = "home_street";
-    private final static String KEY_HOME_NEIGHBORHOOD = "home_neighborhood";
-    private final static String KEY_HOME_CITY = "home_city";
-    private final static String KEY_HOME_STATE = "home_state";
-    private final static String KEY_PHOTO_URL = "photo_url";    
+    public final static String KEY_PERSON_RECORD_ID = "person_record_id";
+    public final static String KEY_ENTRY_DATE = "entry_date";
+    public final static String KEY_EXPIRY_DATE = "expiry_date";
+    public final static String KEY_FULL_NAME = "full_name";
+    public final static String KEY_GIVEN_NAME = "given_name";
+    public final static String KEY_DESCRIPTION = "description";
+    public final static String KEY_SEX = "sex";
+    public final static String KEY_AGE = "age";
+    public final static String KEY_HOME_STREET = "home_street";
+    public final static String KEY_HOME_NEIGHBORHOOD = "home_neighborhood";
+    public final static String KEY_HOME_CITY = "home_city";
+    public final static String KEY_HOME_STATE = "home_state";
+    public final static String KEY_PHOTO_URL = "photo_url";
+    
+    public final static Set<String> validKeys = new HashSet<String>(Arrays.asList(
+                new String[] {
+                    KEY_AGE, KEY_DESCRIPTION,
+                    KEY_ENTRY_DATE, KEY_EXPIRY_DATE,
+                    KEY_FULL_NAME, KEY_GIVEN_NAME,
+                    KEY_HOME_CITY, KEY_HOME_NEIGHBORHOOD,
+                    KEY_HOME_STATE, KEY_HOME_NEIGHBORHOOD,
+                    KEY_HOME_STREET, KEY_PHOTO_URL,KEY_SEX
+                })
+            );
             
     private Map<String, String> data; 
     
     public PFIFBuilder() {
         this.data = new TreeMap<String, String>();
+    }
+    
+    public void add(String key, String value) {
+        if(validKeys.contains(key)) {
+            data.put(key, value);
+        }
     }
     
     public PFIFBuilder personRecordId(String id) {
@@ -46,13 +62,13 @@ public class PFIFBuilder {
         return this;
     }
     
-    public PFIFBuilder entryExpiry(String expiryDate) {
+    public PFIFBuilder expiryDate(String expiryDate) {
         this.data.put(KEY_EXPIRY_DATE, expiryDate);
         return this;
     }
     
-    public PFIFBuilder age(int age) {
-        this.data.put(KEY_AGE, String.valueOf(age));
+    public PFIFBuilder age(String age) {
+        this.data.put(KEY_AGE, age);
         return this;
     }
     
@@ -125,7 +141,7 @@ public class PFIFBuilder {
     public static void main(String[] args) {
         String xml = new PFIFBuilder()
                 .personRecordId("person-1")
-                .age(25)
+                .age("25")
                 .fullName("Massimo Nicosia")
                 .givenName("Massimo")
                 .homeCity("Monopoli")
@@ -133,7 +149,7 @@ public class PFIFBuilder {
                 .sex("male")
                 .description("a grattate!")
                 .build();
-        
+
         System.out.println(xml);
     }
 }
