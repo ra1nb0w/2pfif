@@ -106,8 +106,8 @@ public class MainWindow extends javax.swing.JFrame {
                 aboutMenuItem.setMnemonic('a');
                 aboutMenuItem.setText("About");
                 aboutMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                aboutMenuItemMouseClicked(evt);
+                        public void mousePressed(java.awt.event.MouseEvent evt) {
+                                aboutMenuItemMousePressed(evt);
                         }
                 });
                 helpMenu.add(aboutMenuItem);
@@ -134,9 +134,9 @@ public class MainWindow extends javax.swing.JFrame {
 	    System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-        private void aboutMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutMenuItemMouseClicked
-		
-        }//GEN-LAST:event_aboutMenuItemMouseClicked
+        private void aboutMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutMenuItemMousePressed
+                System.out.print("pressed");
+        }//GEN-LAST:event_aboutMenuItemMousePressed
 
 	/**
 	 * @param args the command line arguments
