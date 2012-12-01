@@ -25,9 +25,9 @@
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Linux"/>
-    <property name="classworlds.conf" value="/usr/share/netbeans-nb-7.2/java/maven/bin/m2.conf"/>
+    <property name="classworlds.conf" value="/home/ra1nb0w/tmp/netbeans-7.2.1/java/maven/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.library.path" value="/opt/icedtea-bin-7.2.3.3/jre/lib/amd64:/opt/icedtea-bin-7.2.3.3/jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -38,7 +38,7 @@
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.7"/>
     <property name="user.name" value="ra1nb0w"/>
-    <property name="java.class.path" value="/usr/share/netbeans-nb-7.2/java/maven/boot/plexus-classworlds-2.4.jar"/>
+    <property name="java.class.path" value="/home/ra1nb0w/tmp/netbeans-7.2.1/java/maven/boot/plexus-classworlds-2.4.jar"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/opt/icedtea-bin-7.2.3.3/jre"/>
@@ -52,7 +52,7 @@
     <property name="securerandom.source" value="file:/dev/./urandom"/>
     <property name="sun.boot.class.path" value="/opt/icedtea-bin-7.2.3.3/jre/lib/resources.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/rt.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/sunrsasign.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/jsse.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/jce.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/charsets.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/netx.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/plugin.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/rhino.jar:/opt/icedtea-bin-7.2.3.3/jre/lib/jfr.jar:/opt/icedtea-bin-7.2.3.3/jre/classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/usr/share/netbeans-nb-7.2/java/maven"/>
+    <property name="maven.home" value="/home/ra1nb0w/tmp/netbeans-7.2.1/java/maven"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
