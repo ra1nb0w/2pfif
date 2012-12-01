@@ -27,8 +27,16 @@
       <version>1.0.3</version>
     </dependency>
     <!-- filedrop dependency -->
+    <!--
     <dependency>
       <groupId>org.iharder</groupId>
+      <artifactId>filedrop</artifactId>
+      <version>1.1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/filedrop.jar</systemPath>
+    </dependency> -->
+    <dependency>
+      <groupId>org.iharder.dnd</groupId>
       <artifactId>filedrop</artifactId>
       <version>1.1</version>
       <scope>system</scope>
