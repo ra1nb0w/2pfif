@@ -5,6 +5,7 @@
 package com.hipifif.pfif;
 
 import java.io.File;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import net.iharder.dnd.FileDrop;
 
@@ -37,6 +38,10 @@ public class MainWindow extends javax.swing.JFrame {
                 jScrollPane1 = new javax.swing.JScrollPane();
                 jTextArea1 = new javax.swing.JTextArea();
                 jButton1 = new javax.swing.JButton();
+                jHelp1 = new javax.swing.JDialog();
+                jButton2 = new javax.swing.JButton();
+                jScrollPane2 = new javax.swing.JScrollPane();
+                jTextPane1 = new javax.swing.JTextPane();
                 jPanel1 = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
                 menuBar = new javax.swing.JMenuBar();
@@ -91,6 +96,35 @@ public class MainWindow extends javax.swing.JFrame {
                                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                                 .add(12, 12, 12)
                                 .add(jButton1)
+                                .addContainerGap())
+                );
+
+                jButton2.setText("Ok");
+
+                jTextPane1.setContentType("Help to be done"); // NOI18N
+                jTextPane1.setText("Help to be done");
+                jScrollPane2.setViewportView(jTextPane1);
+
+                org.jdesktop.layout.GroupLayout jHelp1Layout = new org.jdesktop.layout.GroupLayout(jHelp1.getContentPane());
+                jHelp1.getContentPane().setLayout(jHelp1Layout);
+                jHelp1Layout.setHorizontalGroup(
+                        jHelp1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(org.jdesktop.layout.GroupLayout.TRAILING, jHelp1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .add(jHelp1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+                                        .add(jHelp1Layout.createSequentialGroup()
+                                                .add(0, 0, Short.MAX_VALUE)
+                                                .add(jButton2)))
+                                .addContainerGap())
+                );
+                jHelp1Layout.setVerticalGroup(
+                        jHelp1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(org.jdesktop.layout.GroupLayout.TRAILING, jHelp1Layout.createSequentialGroup()
+                                .add(20, 20, 20)
+                                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                                .add(18, 18, 18)
+                                .add(jButton2)
                                 .addContainerGap())
                 );
 
@@ -180,8 +214,12 @@ public class MainWindow extends javax.swing.JFrame {
                 helpMenu.setText("Help");
 
                 contentsMenuItem.setMnemonic('c');
-                contentsMenuItem.setText("Contents");
-                contentsMenuItem.setEnabled(false);
+                contentsMenuItem.setText("Help");
+                contentsMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mousePressed(java.awt.event.MouseEvent evt) {
+                                contentsMenuItemMousePressed(evt);
+                        }
+                });
                 helpMenu.add(contentsMenuItem);
 
                 aboutMenuItem.setMnemonic('a');
@@ -229,8 +267,19 @@ public class MainWindow extends javax.swing.JFrame {
 		if ( ret == javax.swing.JFileChooser.APPROVE_OPTION) {
 			openFile = jFileChooser1.getSelectedFile();
 			//JOptionPane.showMessageDialog(this, openFile.toString());
+			//CSVReader a = new CSVReader();
+			//a.Send(openFile.toString());
+			try {
+				CSVReader.Send(openFile.toString());
+			} catch (IOException e) {
+				System.err.print(e);
+			}
 		}
         }//GEN-LAST:event_openMenuItemMousePressed
+
+        private void contentsMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contentsMenuItemMousePressed
+                jHelp1.setVisible(true);
+        }//GEN-LAST:event_contentsMenuItemMousePressed
 	
 	/**
 	 * @param args the command line arguments
@@ -263,24 +312,27 @@ public class MainWindow extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new MainWindow().setVisible(true);
-				DragDrop();
+				//DragDrop();
 			}
 		});
 	}
 	
 	/*
 	 * Drag and Drop method
+	 * http://www.iharder.net/current/java/filedrop/
 	 */
+	/*
 	private static void DragDrop() {
 		FileDrop funct = new  FileDrop(jPanel1, new FileDrop.Listener()	{ 
 			public void  filesDropped( File[] files ) {
-			/* only first value
-			* user while ( File file : files ) {} otherwise
-			*/
+			// only first value
+			// user while ( File file : files ) {} otherwise
 			openFile = files[0];
 		}
-});
+}); 
 	}
+
+*/
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JMenuItem aboutMenuItem;
         private javax.swing.JMenuItem contentsMenuItem;
@@ -293,11 +345,15 @@ public class MainWindow extends javax.swing.JFrame {
         private javax.swing.JMenu helpMenu;
         private javax.swing.JDialog jAbout1;
         private javax.swing.JButton jButton1;
+        private javax.swing.JButton jButton2;
         private javax.swing.JFileChooser jFileChooser1;
+        private javax.swing.JDialog jHelp1;
         private javax.swing.JLabel jLabel1;
         private static javax.swing.JPanel jPanel1;
         private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JScrollPane jScrollPane2;
         private javax.swing.JTextArea jTextArea1;
+        private javax.swing.JTextPane jTextPane1;
         private javax.swing.JMenuBar menuBar;
         private javax.swing.JMenuItem openMenuItem;
         private javax.swing.JMenuItem pasteMenuItem;

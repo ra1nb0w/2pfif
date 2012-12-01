@@ -19,6 +19,8 @@ public class CSVReader {
     private int numberOfFields;
     private List<String> keys;
     
+    public CSVReader() { }
+    
     public CSVReader(String path) throws FileNotFoundException, IOException {
         in = new Reader(path);
         String firstLine = in.nextLine();
@@ -52,8 +54,9 @@ public class CSVReader {
         in.close();
     }
     
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        CSVReader reader = new CSVReader("people.csv");
+    public static void Send(String arg) throws FileNotFoundException, IOException {
+        //CSVReader reader = new CSVReader("people.csv");
+	CSVReader reader = new CSVReader(arg);
         while(reader.hasRecord()) {
             Map<String, String> record = reader.getRecord();         
             PFIFBuilder builder = new PFIFBuilder();           
@@ -65,6 +68,7 @@ public class CSVReader {
             }        
             String xml = builder.build();
             System.out.println(xml);
+	    HTTPRequest.SendPostData(xml);
         }
         reader.close();
     }
