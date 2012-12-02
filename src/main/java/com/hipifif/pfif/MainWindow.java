@@ -5,7 +5,6 @@
 package com.hipifif.pfif;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -58,6 +57,7 @@ public class MainWindow extends javax.swing.JFrame {
                 jFileChooser1.setDragEnabled(true);
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setTitle("2pfif");
                 setMaximumSize(new java.awt.Dimension(200, 200));
                 setMinimumSize(new java.awt.Dimension(200, 200));
                 setName("2pfif"); // NOI18N
