@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 public class CSVReader {
     
@@ -44,6 +43,7 @@ public class CSVReader {
         }
         
         for(int i = 0; i < numberOfFields; i++) {
+            System.out.println(keys.get(i) + " " + record[i]);
             result.put(keys.get(i), record[i]);
         }
         
@@ -56,27 +56,14 @@ public class CSVReader {
     }
     
     public static void Send(String arg) throws FileNotFoundException, IOException {
-        //CSVReader reader = new CSVReader("people.csv");
 	CSVReader reader = new CSVReader(arg);
+        PFIFSender sender = new PFIFSender();
         while(reader.hasRecord()) {
-            Map<String, String> record = reader.getRecord();         
-            PFIFBuilder builder = new PFIFBuilder();           
-            for(String key : record.keySet()) {           
-                if(PFIFBuilder.validKeys.contains(key)) {
-                    String value = record.get(key);
-                    builder.add(key, value);
-                }
-            }        
-            String xml = builder.build();
-            System.out.println(xml);
-	    boolean ret = HTTPRequest.SendPostData(xml);
-	    /*
-	     * if true good commit :)
-	     */
-	    if(ret) {
-		    JOptionPane.showMessageDialog(null, "Data commited");
-	    }	    
+            PFIFBuilder builder = new PFIFBuilder(reader.getRecord());                 
+            sender.feed(builder);
         }
+        sender.send();
         reader.close();
-    }
+    }   
+    
 }

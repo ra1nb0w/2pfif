@@ -35,12 +35,4 @@ public class Reader {
     public void close() throws IOException {
         in.close();
     }
-    
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        Reader in = new Reader("people.cvs");
-        while(in.hasNextLine()) {
-            System.out.println(in.nextLine());
-        }
-        in.close();
-    }
 }
