@@ -54,6 +54,7 @@ public class PFIFSender {
         System.out.println(buffer.toString());
         
 	// check if send is ok
+	// maybe not
         if(HTTPRequest.SendPostData(buffer.toString())) {
 		JOptionPane.showMessageDialog(null, "Commit executed");
 	}
