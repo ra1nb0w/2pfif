@@ -8,4 +8,4 @@ http://www.rhok.org/problems/upload-tool-person-finder
 
 USE
 ===
-load the project with netbeans
+load the project in netbeans
