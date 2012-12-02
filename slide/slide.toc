@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{RHOK 2012}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{RHOK Problem}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Ideas}{3}{0}{1}
+\beamer@subsectionintoc {1}{3}{What we have done}{4}{0}{1}
+\beamer@subsectionintoc {1}{4}{Proof of Concept}{5}{0}{1}
+\beamer@subsectionintoc {1}{5}{Problems/TODO}{6}{0}{1}
+\beamer@subsectionintoc {1}{6}{Questions}{7}{0}{1}
