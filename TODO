@@ -1,7 +1,7 @@
 * :)
 * controllare i valori di ritorno HTTP con un alert in base a 40* o 50*
 * generare la api key
-* generare un unico XML ed una sola POST
+DONE * generare un unico XML ed una sola POST
 * fare il serch->alert prima del POST
-* aggiungere dominio sul XML (domain/person_id)
-* aggregare gli eventi del menu
+DONE * aggiungere dominio sul XML (domain/person_id)
+DONE * aggregare gli eventi del menu

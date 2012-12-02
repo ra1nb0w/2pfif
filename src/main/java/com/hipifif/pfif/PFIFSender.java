@@ -7,6 +7,7 @@ package com.hipifif.pfif;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,7 +53,10 @@ public class PFIFSender {
         
         System.out.println(buffer.toString());
         
-        HTTPRequest.SendPostData(buffer.toString());     
+	// check if send is ok
+        if(HTTPRequest.SendPostData(buffer.toString())) {
+		JOptionPane.showMessageDialog(null, "Commit executed");
+	}
         
         this.persons.clear();
     }
