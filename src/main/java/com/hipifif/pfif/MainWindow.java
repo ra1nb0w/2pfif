@@ -5,7 +5,6 @@
 package com.hipifif.pfif;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
