@@ -51,10 +51,7 @@ public class MainWindow extends javax.swing.JFrame {
                 saveAsMenuItem = new javax.swing.JMenuItem();
                 exitMenuItem = new javax.swing.JMenuItem();
                 editMenu = new javax.swing.JMenu();
-                cutMenuItem = new javax.swing.JMenuItem();
-                copyMenuItem = new javax.swing.JMenuItem();
-                pasteMenuItem = new javax.swing.JMenuItem();
-                deleteMenuItem = new javax.swing.JMenuItem();
+                jMenuItem2 = new javax.swing.JMenuItem();
                 helpMenu = new javax.swing.JMenu();
                 contentsMenuItem = new javax.swing.JMenuItem();
                 jMenuItem1 = new javax.swing.JMenuItem();
@@ -191,23 +188,14 @@ public class MainWindow extends javax.swing.JFrame {
 
                 editMenu.setMnemonic('e');
                 editMenu.setText("Edit");
-                editMenu.setEnabled(false);
 
-                cutMenuItem.setMnemonic('t');
-                cutMenuItem.setText("Cut");
-                editMenu.add(cutMenuItem);
-
-                copyMenuItem.setMnemonic('y');
-                copyMenuItem.setText("Copy");
-                editMenu.add(copyMenuItem);
-
-                pasteMenuItem.setMnemonic('p');
-                pasteMenuItem.setText("Paste");
-                editMenu.add(pasteMenuItem);
-
-                deleteMenuItem.setMnemonic('d');
-                deleteMenuItem.setText("Delete");
-                editMenu.add(deleteMenuItem);
+                jMenuItem2.setText("Preferences");
+                jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mousePressed(java.awt.event.MouseEvent evt) {
+                                jMenuItem2MousePressed(evt);
+                        }
+                });
+                editMenu.add(jMenuItem2);
 
                 menuBar.add(editMenu);
 
@@ -266,15 +254,17 @@ public class MainWindow extends javax.swing.JFrame {
 	 * about dialog
 	 */
         private void aboutMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aboutMenuItemMousePressed
-		// check why not show :)
+		javax.swing.MenuSelectionManager.defaultManager().clearSelectedPath();
 		About.main();
         }//GEN-LAST:event_aboutMenuItemMousePressed
 
         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+		javax.swing.MenuSelectionManager.defaultManager().clearSelectedPath();
 		jAbout1.dispose();
         }//GEN-LAST:event_jButton1ActionPerformed
 
         private void openMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openMenuItemMousePressed
+		javax.swing.MenuSelectionManager.defaultManager().clearSelectedPath();
 		int ret = jFileChooser1.showOpenDialog(this);
 		if ( ret == javax.swing.JFileChooser.APPROVE_OPTION) {
 			openFile = jFileChooser1.getSelectedFile();
@@ -293,15 +283,25 @@ public class MainWindow extends javax.swing.JFrame {
 	 * Help Dialog
 	 */
         private void contentsMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contentsMenuItemMousePressed
-                Help.main();
+                javax.swing.MenuSelectionManager.defaultManager().clearSelectedPath();
+		Help.main();
         }//GEN-LAST:event_contentsMenuItemMousePressed
 
 	/*
 	 * Open License jDialog
 	 */
         private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-                License.main();
+                javax.swing.MenuSelectionManager.defaultManager().clearSelectedPath();
+		License.main();
         }//GEN-LAST:event_jMenuItem1MousePressed
+
+	/*
+	 * Preferences jDialog
+	 */
+        private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
+		javax.swing.MenuSelectionManager.defaultManager().clearSelectedPath();
+		Preferences.main();
+        }//GEN-LAST:event_jMenuItem2MousePressed
 	
 	/**
 	 * @param args the command line arguments
@@ -358,9 +358,6 @@ public class MainWindow extends javax.swing.JFrame {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JMenuItem aboutMenuItem;
         private javax.swing.JMenuItem contentsMenuItem;
-        private javax.swing.JMenuItem copyMenuItem;
-        private javax.swing.JMenuItem cutMenuItem;
-        private javax.swing.JMenuItem deleteMenuItem;
         private javax.swing.JMenu editMenu;
         private javax.swing.JMenuItem exitMenuItem;
         private javax.swing.JMenu fileMenu;
@@ -372,6 +369,7 @@ public class MainWindow extends javax.swing.JFrame {
         private javax.swing.JDialog jHelp1;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JMenuItem jMenuItem1;
+        private javax.swing.JMenuItem jMenuItem2;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JScrollPane jScrollPane1;
         private javax.swing.JScrollPane jScrollPane2;
@@ -379,7 +377,6 @@ public class MainWindow extends javax.swing.JFrame {
         private javax.swing.JTextPane jTextPane1;
         private javax.swing.JMenuBar menuBar;
         private javax.swing.JMenuItem openMenuItem;
-        private javax.swing.JMenuItem pasteMenuItem;
         private javax.swing.JMenuItem saveAsMenuItem;
         private javax.swing.JMenuItem saveMenuItem;
         // End of variables declaration//GEN-END:variables

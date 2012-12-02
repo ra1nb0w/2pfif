@@ -3,3 +3,5 @@
 * generare la api key
 * generare un unico XML ed una sola POST
 * fare il serch->alert prima del POST
+* aggiungere dominio sul XML (domain/person_id)
+* aggregare gli eventi del menu
