@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class HTTPRequest {
 
 	/*
-	 * TODO: return check value
+	 * 
 	 */
 	public static boolean SendPostData(String postData) throws MalformedURLException, IOException {
 		boolean ret=true;
@@ -60,5 +60,14 @@ public class HTTPRequest {
 		wr.close();
 		connection.disconnect();
 		return(ret);
+	}
+	
+	/*
+	 * TO BE
+	 */
+	public static String[] ReturnSearch(String personId) throws MalformedURLException, IOException {
+		String[] result={};
+		// return
+		return (result);
 	}
 }

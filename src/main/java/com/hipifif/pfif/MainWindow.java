@@ -7,7 +7,7 @@ package com.hipifif.pfif;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import net.iharder.dnd.FileDrop;
+//import net.iharder.dnd.FileDrop;
 
 /**
  *
@@ -268,7 +268,8 @@ public class MainWindow extends javax.swing.JFrame {
 			public void  filesDropped( File[] files ) {
 			// only first value
 			// user while ( File file : files ) {} otherwise
-			openFile = files[0];
+			JOptionPane.showMessageDialog(null, files[0]);
+			//openFile = files[0];
 		}
 }); 
 	}
