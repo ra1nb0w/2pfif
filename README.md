@@ -5,3 +5,7 @@ project started during RHOK 2012
 
 problem link
 http://www.rhok.org/problems/upload-tool-person-finder
+
+USE
+===
+load the project with netbeans
