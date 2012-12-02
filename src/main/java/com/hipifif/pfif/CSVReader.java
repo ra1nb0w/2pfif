@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class CSVReader {
     
@@ -68,7 +69,13 @@ public class CSVReader {
             }        
             String xml = builder.build();
             System.out.println(xml);
-	    HTTPRequest.SendPostData(xml);
+	    boolean ret = HTTPRequest.SendPostData(xml);
+	    /*
+	     * if true good commit :)
+	     */
+	    if(ret) {
+		    JOptionPane.showMessageDialog(null, "Data commited");
+	    }	    
         }
         reader.close();
     }
