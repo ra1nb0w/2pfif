@@ -8,11 +8,6 @@ import java.util.TreeMap;
 
 public class PFIFBuilder {
     
-    private final static String HEADER = "<!--?xml version=\"1.0\" encoding=\"UTF-8\"?-->\n" +
-        "<pfif:pfif xmlns:pfif=\"http://zesty.ca/pfif/1.4\">\n";
-    
-    private final static String FOOTER = "</pfif:pfif> \n";
-    
     private final static int INITIAL_STRINGBUFFER_CAPACITY = 1024 * 6;
     
     public final static String KEY_PERSON_RECORD_ID = "person_record_id";
@@ -31,7 +26,7 @@ public class PFIFBuilder {
     
     public final static Set<String> validKeys = new HashSet<String>(Arrays.asList(
                 new String[] {
-                    KEY_AGE, KEY_DESCRIPTION,
+                    KEY_PERSON_RECORD_ID, KEY_AGE, KEY_DESCRIPTION,
                     KEY_ENTRY_DATE, KEY_EXPIRY_DATE,
                     KEY_FULL_NAME, KEY_GIVEN_NAME,
                     KEY_HOME_CITY, KEY_HOME_NEIGHBORHOOD,
@@ -44,6 +39,16 @@ public class PFIFBuilder {
     
     public PFIFBuilder() {
         this.data = new TreeMap<String, String>();
+    }
+    
+    public PFIFBuilder(Map<String, String> map) {
+        this.data = new TreeMap<String, String>();
+        for(String key : map.keySet()) {           
+            if(PFIFBuilder.validKeys.contains(key)) {
+                String value = map.get(key);
+                this.add(key, value);
+            }
+        }
     }
     
     public void add(String key, String value) {
@@ -120,7 +125,7 @@ public class PFIFBuilder {
     public String build() {
         StringBuilder buffer = new StringBuilder(INITIAL_STRINGBUFFER_CAPACITY);
         
-        buffer.append(HEADER);
+        buffer.append("<pfif:person>\n");
         
         for(String field : this.data.keySet()) {
             buffer.append("  <pfif:");
@@ -133,23 +138,8 @@ public class PFIFBuilder {
             buffer.append(">\n");
         }
         
-        buffer.append(FOOTER);
+        buffer.append("</pfif:person>\n");
         
         return buffer.toString();
-    }
-    
-    public static void main(String[] args) {
-        String xml = new PFIFBuilder()
-                .personRecordId("person-1")
-                .age("25")
-                .fullName("Massimo Nicosia")
-                .givenName("Massimo")
-                .homeCity("Monopoli")
-                .homeState("Italy")
-                .sex("male")
-                .description("a grattate!")
-                .build();
-
-        System.out.println(xml);
     }
 }
