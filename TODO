@@ -1,5 +1,5 @@
 * :)
-* controllare i valori di ritorno HTTP con un alert in base a 40* o 50*
+DONE * controllare i valori di ritorno HTTP con un alert in base a 40* o 50*
 * generare la api key
 DONE * generare un unico XML ed una sola POST
 * fare il serch->alert prima del POST
