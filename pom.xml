@@ -8,7 +8,28 @@
   <packaging>jar</packaging>
 
   <name>2pfif</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/ra1nb0w/2pfif</url>
+
+<!-- avoid no main manifest attribute in maven jar
+http://jamandbees.net/2012/04/16/no-main-manifest-attribute-in-maven-jar/
+-->
+   <build>
+   <plugins>
+      <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+          <archive>
+               <manifest>
+                    <mainClass>com.hipifif.pfif.MainWindow</mainClass>
+               </manifest>
+          </archive>
+     <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+      </descriptorRefs>
+ </configuration>
+</plugin>
+</plugins>
+</build>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,14 +48,5 @@
       <version>1.0.3</version>
     </dependency>
     <!-- filedrop dependency -->
-    <!--
-    <dependency>
-      <groupId>org.iharder.dnd</groupId>
-      <artifactId>filedrop</artifactId>
-      <version>1.1</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/filedrop.jar</systemPath>
-    </dependency>
-    -->
    </dependencies>
 </project>

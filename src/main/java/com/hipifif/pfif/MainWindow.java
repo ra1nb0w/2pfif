@@ -5,9 +5,13 @@
 package com.hipifif.pfif;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-//import net.iharder.dnd.FileDrop;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 /**
  *
@@ -15,8 +19,10 @@ import javax.swing.JOptionPane;
  */
 public class MainWindow extends javax.swing.JFrame {
 	
-	static File openFile;
-
+	private static final String FILE_PATTERN = "([^\\s]+(\\.(?i)(csv))$)";
+	private static Pattern pattern;
+	private static Matcher matcher;
+	
 	/**
 	 * Creates new form MainWindow
 	 */
@@ -183,16 +189,17 @@ public class MainWindow extends javax.swing.JFrame {
 		About.main();
         }//GEN-LAST:event_aboutMenuItemMousePressed
 	
+	/*
+	 * chooser dialog
+	 */
         private void openMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openMenuItemMousePressed
 		javax.swing.MenuSelectionManager.defaultManager().clearSelectedPath();
+		jFileChooser1.setAcceptAllFileFilterUsed(false);
+		jFileChooser1.addChoosableFileFilter(new FileNameExtensionFilter("csv file", "csv"));
 		int ret = jFileChooser1.showOpenDialog(this);
 		if ( ret == javax.swing.JFileChooser.APPROVE_OPTION) {
-			openFile = jFileChooser1.getSelectedFile();
-			//JOptionPane.showMessageDialog(this, openFile.toString());
-			//CSVReader a = new CSVReader();
-			//a.Send(openFile.toString());
 			try {
-				CSVReader.Send(openFile.toString());
+				CSVReader.Send(jFileChooser1.getSelectedFile().toString());
 			} catch (IOException e) {
 				System.err.print(e);
 			}
@@ -254,7 +261,10 @@ public class MainWindow extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new MainWindow().setVisible(true);
-				//DragDrop();
+				// prepare validator
+				FileValidator();
+				// enable drag and drop method
+				DragDrop();
 			}
 		});
 	}
@@ -266,12 +276,34 @@ public class MainWindow extends javax.swing.JFrame {
 	private static void DragDrop() {
 		FileDrop funct = new  FileDrop(jPanel1, new FileDrop.Listener()	{ 
 			public void  filesDropped( File[] files ) {
-			// only first value
-			// user while ( File file : files ) {} otherwise
-			JOptionPane.showMessageDialog(null, files[0]);
-			//openFile = files[0];
+			for ( File file : files ) {
+				if (Validate(file.toString())) {
+				try {
+					CSVReader.Send(file.toString());
+				} catch (IOException e) {
+					System.err.print(e);
+				}
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "File not supported", "Not supported", JOptionPane.ERROR_MESSAGE);
+				}
+			}
 		}
 }); 
+	}
+	
+	private static void FileValidator() {
+		pattern = Pattern.compile(FILE_PATTERN);
+	}
+	
+	/**
+	* Validate image with regular expression
+	* @param image image for validation
+	* @return true valid image, false invalid image
+	*/
+	public static boolean Validate(final String file){
+	  matcher = pattern.matcher(file);
+	  return matcher.matches();
 	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
